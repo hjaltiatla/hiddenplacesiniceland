@@ -5,6 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "build:css": "tailwindcss -i ./public/css/input.css -o ./public/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./public/css/input.css -o ./public/css/tailwind.css --watch",
     "seed": "node database/seed.js",
     "dev": "node --watch server.js",
     "import": "node scripts/importPlaces.js",
@@ -22,6 +24,8 @@
     "sql.js": "^1.12.0"
   },
   "devDependencies": {
-    "sharp": "^0.33.5"
+    "@tailwindcss/cli": "^4.2.1",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^4.2.1"
   }
 }

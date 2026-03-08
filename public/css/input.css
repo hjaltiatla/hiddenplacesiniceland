@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  --color-iceland-blue: #003F87;
+  --color-iceland-red: #DC1E35;
+  --color-iceland-light: #E8F0FB;
+}

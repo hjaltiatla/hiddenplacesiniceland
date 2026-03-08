@@ -6,7 +6,9 @@
       "Bash(curl:*)",
       "Bash(xargs sed:*)",
       "Bash(sqlite3:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(grep:*)"
     ]
   }
 }
