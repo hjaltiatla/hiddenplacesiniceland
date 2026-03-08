@@ -105,6 +105,16 @@ async function init() {
     save();
   }
 
+  // Backfill google_maps_url for any rows missing one
+  const missingMaps = all("SELECT id, latitude, longitude FROM places WHERE google_maps_url IS NULL OR google_maps_url = ''");
+  if (missingMaps.length > 0) {
+    for (const row of missingMaps) {
+      _db.run('UPDATE places SET google_maps_url = ? WHERE id = ?',
+        [`https://maps.google.com/?q=${row.latitude},${row.longitude}`, row.id]);
+    }
+    save();
+  }
+
   // Apply performance indices
   require('./migrations')({ run: (sql) => _db.run(sql) });
 }
