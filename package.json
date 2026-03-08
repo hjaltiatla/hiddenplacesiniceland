@@ -1,0 +1,27 @@
+{
+  "name": "falnir-stadir-a-islandi",
+  "version": "1.0.0",
+  "description": "Falnir Staðir á Íslandi - Hidden Places in Iceland",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node database/seed.js",
+    "dev": "node --watch server.js",
+    "import": "node scripts/importPlaces.js",
+    "download-images": "node scripts/downloadImages.js",
+    "optimize-images": "node scripts/optimizeImages.js"
+  },
+  "dependencies": {
+    "axios": "^1.13.6",
+    "compression": "^1.7.4",
+    "dotenv": "^17.3.1",
+    "ejs": "^3.1.10",
+    "express": "^4.18.3",
+    "fs-extra": "^11.3.4",
+    "slugify": "^1.6.6",
+    "sql.js": "^1.12.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

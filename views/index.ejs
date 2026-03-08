@@ -1,0 +1,108 @@
+<%
+  const difficultyClass = { easy: 'badge-easy', medium: 'badge-medium', hard: 'badge-hard' };
+%>
+
+<!-- Hero -->
+<div class="text-center mb-10">
+  <h1 class="text-4xl font-bold text-gray-800 mb-3"><%= t('hero_title') %></h1>
+  <p class="text-gray-500 text-lg mb-5"><%= t('hero_subtitle') %></p>
+  <a href="/<%= lang %>/<%= t('near_reykjavik_slug') %>"
+     class="inline-flex items-center gap-2 bg-iceland-blue text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-800 transition-colors shadow">
+    📍 <%= t('near_reykjavik_hero_link') %>
+  </a>
+</div>
+
+<!-- Filters -->
+<form method="GET" action="/<%= lang %>" class="bg-white rounded-2xl shadow p-5 mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
+  <div class="lg:col-span-2">
+    <label class="block text-xs font-semibold text-gray-600 mb-1"><%= t('label_search') %></label>
+    <input type="text" name="search" value="<%= filters.search || '' %>"
+      placeholder="<%= t('placeholder_search') %>"
+      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none">
+  </div>
+
+  <div>
+    <label class="block text-xs font-semibold text-gray-600 mb-1"><%= t('label_region') %></label>
+    <select name="region" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none">
+      <option value=""><%= t('all_regions') %></option>
+      <% regions.forEach(r => { %>
+        <option value="<%= r %>" <%= filters.region === r ? 'selected' : '' %>><%= r %></option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div>
+    <label class="block text-xs font-semibold text-gray-600 mb-1"><%= t('label_category') %></label>
+    <select name="category" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none">
+      <option value=""><%= t('all_categories') %></option>
+      <% Object.entries(categories).forEach(([key, label]) => { %>
+        <option value="<%= key %>" <%= filters.category === key ? 'selected' : '' %>><%= label %></option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div>
+    <label class="block text-xs font-semibold text-gray-600 mb-1"><%= t('label_difficulty') %></label>
+    <select name="difficulty" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 outline-none">
+      <option value=""><%= t('all_difficulties') %></option>
+      <% Object.entries(difficulties).forEach(([key, label]) => { %>
+        <option value="<%= key %>" <%= filters.difficulty === key ? 'selected' : '' %>><%= label %></option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div class="sm:col-span-2 lg:col-span-5 flex gap-2 justify-end">
+    <button type="submit" class="bg-iceland-blue text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-blue-800 transition-colors">
+      <%= t('btn_search') %>
+    </button>
+    <a href="/<%= lang %>" class="bg-gray-100 text-gray-700 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-colors">
+      <%= t('btn_clear') %>
+    </a>
+  </div>
+</form>
+
+<!-- Results count -->
+<p class="text-sm text-gray-500 mb-4">
+  <% if (places.length === 0) { %>
+    <%= t('no_results') %>
+  <% } else { %>
+    <strong><%= places.length %></strong> <%= t('results_found') %>
+  <% } %>
+</p>
+
+<!-- Cards -->
+<% if (places.length === 0) { %>
+  <div class="text-center py-20 text-gray-400">
+    <p class="text-5xl mb-4">🔍</p>
+    <p class="text-xl"><%= t('no_results_detail') %></p>
+    <a href="/<%= lang %>" class="mt-4 inline-block text-blue-600 hover:underline"><%= t('clear_search') %></a>
+  </div>
+<% } else { %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% places.forEach(place => { %>
+      <a href="/<%= lang %>/places/<%= place.id %>" class="bg-white rounded-2xl shadow overflow-hidden card-hover block">
+        <div class="relative h-48 bg-gray-200 overflow-hidden">
+          <img src="<%= place.imageUrl %>" alt="<%= place.name %>" class="w-full h-full object-cover"
+            onerror="this.src='/images/default-place.jpg'">
+          <span class="absolute top-3 left-3 text-xs font-semibold px-2 py-1 rounded-full category-<%= place.category %>">
+            <%= categories[place.category] || place.category %>
+          </span>
+        </div>
+        <div class="p-4">
+          <h2 class="font-bold text-gray-800 text-lg mb-1 truncate"><%= place.name %></h2>
+          <p class="text-gray-500 text-sm mb-3 flex items-center gap-1">
+            <span>📍</span> <%= place.region || 'Iceland' %>
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold px-2 py-1 rounded-full <%= difficultyClass[place.difficulty] || 'bg-gray-100 text-gray-600' %>">
+              <%= difficulties[place.difficulty] || place.difficulty %>
+            </span>
+            <% if (place.best_season) { %>
+              <span class="text-xs text-gray-400 truncate ml-2">🗓 <%= place.best_season %></span>
+            <% } %>
+          </div>
+        </div>
+      </a>
+    <% }) %>
+  </div>
+<% } %>

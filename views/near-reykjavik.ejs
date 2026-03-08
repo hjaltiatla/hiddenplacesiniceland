@@ -1,0 +1,73 @@
+<%
+  const difficultyClass = { easy: 'badge-easy', medium: 'badge-medium', hard: 'badge-hard' };
+%>
+
+<!-- Hero -->
+<div class="text-center mb-10">
+  <p class="text-sm font-semibold text-iceland-blue uppercase tracking-widest mb-2">📍 Reykjavik</p>
+  <h1 class="text-4xl font-bold text-gray-800 mb-3"><%= t('near_reykjavik_title') %></h1>
+  <p class="text-gray-500 text-lg max-w-xl mx-auto"><%= t('near_reykjavik_subtitle') %></p>
+  <a href="/<%= lang %>" class="mt-4 inline-block text-sm text-blue-600 hover:underline">
+    ← <%= t('back_to_list') %>
+  </a>
+</div>
+
+<% if (places.length === 0) { %>
+  <div class="text-center py-20 text-gray-400">
+    <p class="text-5xl mb-4">🔍</p>
+    <p class="text-xl"><%= t('near_reykjavik_empty') %></p>
+  </div>
+<% } else { %>
+
+  <!-- Count -->
+  <p class="text-sm text-gray-500 mb-6">
+    <strong><%= places.length %></strong> <%= t('results_found') %>
+  </p>
+
+  <!-- Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% places.forEach(place => { %>
+      <a href="/<%= lang %>/places/<%= place.id %>" class="bg-white rounded-2xl shadow overflow-hidden card-hover block">
+
+        <!-- Photo -->
+        <div class="relative h-48 bg-gray-200 overflow-hidden">
+          <img src="<%= place.imageUrl %>" alt="<%= place.name %>" class="w-full h-full object-cover"
+            onerror="this.src='/images/default-place.jpg'">
+
+          <!-- Distance badge top right -->
+          <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-bold px-2.5 py-1 rounded-full shadow">
+            <%= place.distance %> km
+          </span>
+
+          <!-- Category badge top left -->
+          <span class="absolute top-3 left-3 text-xs font-semibold px-2 py-1 rounded-full category-<%= place.category %>">
+            <%= categories[place.category] || place.category %>
+          </span>
+        </div>
+
+        <!-- Card body -->
+        <div class="p-4">
+          <h2 class="font-bold text-gray-800 text-lg mb-1 truncate"><%= place.name %></h2>
+
+          <!-- Drive time -->
+          <% if (place.drive_time_from_reykjavik) { %>
+            <p class="text-gray-500 text-sm mb-2 flex items-center gap-1">
+              🚗 <%= place.drive_time_from_reykjavik %> <%= t('label_from_reykjavik') %>
+            </p>
+          <% } %>
+
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-xs font-semibold px-2 py-1 rounded-full <%= difficultyClass[place.difficulty] || 'bg-gray-100 text-gray-600' %>">
+              <%= difficulties[place.difficulty] || place.difficulty %>
+            </span>
+            <% if (place.region) { %>
+              <span class="text-xs text-gray-400">📍 <%= place.region %></span>
+            <% } %>
+          </div>
+        </div>
+
+      </a>
+    <% }) %>
+  </div>
+
+<% } %>

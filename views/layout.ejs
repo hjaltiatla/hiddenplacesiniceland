@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= locals.metaTitle || (title + ' – ' + t('site_title')) %></title>
+
+  <% if (locals.metaTags) { %>
+    <%- metaTags %>
+  <% } else { %>
+    <meta name="description" content="<%= locals.metaDescription || t('site_tagline') %>">
+    <meta property="og:title" content="<%= locals.metaTitle || (title + ' – ' + t('site_title')) %>">
+    <meta property="og:description" content="<%= locals.metaDescription || t('site_tagline') %>">
+    <meta property="og:type" content="website">
+  <% } %>
+
+  <% if (locals.structuredData) { %>
+    <script type="application/ld+json">
+      <%- structuredData %>
+    </script>
+  <% } %>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            iceland: { blue: '#003F87', red: '#DC1E35', light: '#E8F0FB' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; }
+    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .card-hover:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+    .badge-easy    { background: #d1fae5; color: #065f46; }
+    .badge-medium  { background: #fef3c7; color: #92400e; }
+    .badge-hard    { background: #fee2e2; color: #991b1b; }
+    .category-waterfall  { background: #dbeafe; color: #1e40af; }
+    .category-canyon     { background: #ede9fe; color: #5b21b6; }
+    .category-hike       { background: #dcfce7; color: #166534; }
+    .category-hot_spring { background: #ffedd5; color: #9a3412; }
+    .category-viewpoint  { background: #f0fdf4; color: #14532d; }
+    .category-beach      { background: #ecfeff; color: #155e75; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <nav class="bg-iceland-blue text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <!-- Brand -->
+        <a href="/<%= lang %>" class="flex items-center gap-2 font-bold text-lg hover:text-blue-200 transition-colors">
+          <span class="text-2xl">🏔️</span>
+          <span class="hidden sm:block"><%= t('site_title') %></span>
+          <span class="sm:hidden">🏔️</span>
+        </a>
+
+        <div class="flex items-center gap-1 sm:gap-4">
+          <!-- Nav links -->
+          <div class="flex items-center gap-3 sm:gap-5 text-sm font-medium">
+            <a href="/<%= lang %>" class="hover:text-blue-200 transition-colors flex items-center gap-1">
+              <span>🏠</span><span class="hidden sm:inline"><%= t('nav_home') %></span>
+            </a>
+            <a href="/<%= lang %>/map" class="hover:text-blue-200 transition-colors flex items-center gap-1">
+              <span>🗺️</span><span class="hidden sm:inline"><%= t('nav_map') %></span>
+            </a>
+            <a href="/<%= lang %>/admin" class="hover:text-blue-200 transition-colors flex items-center gap-1">
+              <span>⚙️</span><span class="hidden sm:inline"><%= t('nav_admin') %></span>
+            </a>
+          </div>
+
+          <!-- Language switcher -->
+          <div class="flex items-center gap-2 text-xs font-semibold ml-2 pl-3 border-l border-blue-600">
+            <% ['en','es','de','zh'].forEach(function(l) { %>
+              <a href="/<%= l %><%= (locals.switcherLinks ? locals.switcherLinks[l] : currentPath) %>"
+                 class="px-1.5 py-0.5 rounded transition-colors <%= lang === l ? 'bg-white text-iceland-blue' : 'text-blue-200 hover:text-white' %>">
+                <%= l === 'zh' ? '中文' : l.toUpperCase() %>
+              </a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <%- body %>
+  </main>
+
+  <footer class="bg-gray-800 text-gray-400 text-center py-6 mt-12 text-sm">
+    <p><%= t('site_footer') %></p>
+  </footer>
+
+</body>
+</html>
