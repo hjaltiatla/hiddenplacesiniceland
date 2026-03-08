@@ -426,16 +426,6 @@ const PLACES = [
     parking_info: 'Free parking throughout the village. The mountain access road (Route 93) closes in heavy snow.',
     description_en: 'Seyðisfjörður is a perfectly preserved 19th-century fjord town surrounded by steep mountains and cascading waterfalls Iceland\'s most scenic village by many accounts. Colourful wooden houses cluster around the fjord head, linked to the Ring Road by a mountain road with dramatic hairpin bends. The town has become an artists\' colony with galleries, music festivals, and a creative atmosphere unlike anywhere else in rural Iceland.',
   },
-  {
-    name: 'Goðaborg',
-    latitude: 64.9833, longitude: -23.6167,
-    region: 'West Iceland', category: 'viewpoint', difficulty: 'easy',
-    best_season: 'Year-round',
-    drive_time_from_reykjavik: '~2.5 hours',
-    parking_info: 'Park in Arnarstapi village and walk 500 metres west along the coastal path. Free.',
-    description_en: 'Goðaborg "God\'s Castle" is a small but commanding lava bastion rising from the Snæfellsnes coastline near Arnarstapi, offering sweeping coastal views of the black lava sea platforms, the Snæfellsjökull glacier and the open Atlantic. The short scramble to the top is easy, and the views are magnificent in all directions. Local legend holds it as a place of particular natural power.',
-  },
-
   // ─── BEACHES ──────────────────────────────────────────────────────────────────
   {
     name: 'Valahnúkamöl',

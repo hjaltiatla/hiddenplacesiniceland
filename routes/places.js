@@ -41,7 +41,7 @@ router.get('/:id', (req, res) => {
 
   let extraImages = [];
   try { extraImages = JSON.parse(place.images || '[]'); } catch {}
-  const allImages = [placeImageUrl(place.slug), ...extraImages];
+  const allImages = [placeImageUrl(place.slug, place.photo_url), ...extraImages];
 
   // SEO data
   const description = (place[`description_${lang}`] || place.description_en || '').substring(0, 160);

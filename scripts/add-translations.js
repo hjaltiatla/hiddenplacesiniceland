@@ -283,12 +283,6 @@ const translations = [
     zh: 'Seyðisfjörður是一座保存完好的19世纪峡湾小镇，四周被陡峭山地和飞瀑环绕——在许多人眼中是冰岛风景最美的村庄。色彩缤纷的木制房屋簇拥在峡湾头部，通过一条有着险峻发夹弯的山路与1号公路相连。这座小镇已发展为拥有画廊、音乐节和充满创意氛围的艺术家聚居地，这种气质在冰岛乡村是独一无二的。',
   },
   {
-    id: 57,
-    es: 'Goðaborg "Castillo de los Dioses" es un pequeño pero imponente bastión de lava que se eleva desde la costa de Snæfellsnes cerca de Arnarstapi, ofreciendo amplias vistas costeras de las plataformas de lava del mar negro, el glaciar Snæfellsjökull y el Atlántico abierto. El corto ascenso a la cima es fácil, y las vistas son magníficas en todas direcciones. La leyenda local lo considera un lugar de particular poder natural.',
-    de: 'Goðaborg „Götterschloss" ist ein kleiner, aber imposanter Lavabastei, der sich aus der Snæfellsnes-Küste nahe Arnarstapi erhebt und weite Küstenblicke auf die schwarzen Lavameherplattformen, den Snæfellsjökull-Gletscher und den offenen Atlantik bietet. Der kurze Aufstieg nach oben ist einfach, und die Aussicht ist in alle Richtungen herrlich. Die lokale Legende hält ihn für einen Ort besonderer natürlicher Kraft.',
-    zh: 'Goðaborg"神之城堡"是一处小巧却气势不凡的熔岩堡垒，从Arnarstapi附近的Snæfellsnes海岸耸起，可俯瞰黑色熔岩海台、Snæfellsjökull冰川和开阔大西洋的广阔海岸景色。短暂攀登至顶部十分轻松，四面八方的景色皆壮丽非凡。当地传说认为此处具有特殊的自然力量。',
-  },
-  {
     id: 58,
     es: 'Valahnúkamöl es un salvaje promontorio costero en la península de Reikjanes donde el Atlántico Norte choca contra antiguos acantilados basálticos, pilares marinos y playas pedregosas cubiertas de vívidos guijarros volcánicos rojos y verdes. A solo minutos del aeropuerto internacional, esta extraordinaria costa salvaje está completamente sin visitar por casi todos los turistas que llegan y parten y que nunca se alejan de la carretera del aeropuerto.',
     de: 'Valahnúkamöl ist ein wilder Küstenvorsprung auf der Reykjanes-Halbinsel, wo der Nordatlantik gegen alte Basaltklippen, Meeressäulen und steinige Strände prallt, die mit lebhaften roten und grünen Vulkankieseln bedeckt sind. Nur Minuten vom internationalen Flughafen entfernt, ist diese außergewöhnliche Wildküste von fast allen an- und abreisenden Touristen völlig unbesucht, die nie die Flughafenstraße verlassen.',
