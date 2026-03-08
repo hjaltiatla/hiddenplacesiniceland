@@ -7,7 +7,7 @@ Hidden Places in Iceland – a multilingual, SEO-optimised full-stack web app to
 | Layer | Technology |
 |-------|-----------|
 | Server | Node.js + Express |
-| Database | sql.js (pure-JS SQLite / WebAssembly) |
+| Database | SQLite via sql.js (WebAssembly – no native build tools needed) |
 | Templates | EJS (server-rendered) |
 | Styling | TailwindCSS (compiled via CLI, custom Iceland theme) |
 | Maps | Leaflet.js (CDN) |
