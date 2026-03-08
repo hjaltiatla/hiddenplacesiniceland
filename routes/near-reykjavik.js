@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
     .map(p => ({
       ...p,
       distance: Math.round(distanceKm(REYKJAVIK.lat, REYKJAVIK.lon, p.latitude, p.longitude)),
-      imageUrl: placeImageUrl(p.slug)
+      imageUrl: placeImageUrl(p.slug, p.photo_url)
     }))
     .filter(p => p.distance <= MAX_KM)
     .sort((a, b) => a.distance - b.distance);

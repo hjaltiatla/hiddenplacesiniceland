@@ -5,7 +5,8 @@
       "Bash(node:*)",
       "Bash(curl:*)",
       "Bash(xargs sed:*)",
-      "Bash(sqlite3:*)"
+      "Bash(sqlite3:*)",
+      "Bash(python3:*)"
     ]
   }
 }
