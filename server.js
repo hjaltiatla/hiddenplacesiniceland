@@ -39,7 +39,6 @@ app.get('/', (req, res) => res.redirect('/en'));
 
 // Backward-compat redirects for old URLs
 app.get('/map', (req, res) => res.redirect('/en/map'));
-app.get('/admin', (req, res) => res.redirect('/en/admin'));
 app.get('/places/:id', (req, res) => res.redirect(`/en/places/${req.params.id}`));
 
 // SEO routes (no language prefix)
